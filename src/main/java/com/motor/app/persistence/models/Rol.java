@@ -18,7 +18,7 @@ public class Rol {
   @Id
   @Column(name = "mtr_id_role")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long idRol;
+  private Long idRol;
 
   @Column(name = "mtr_name_role")
   private String nameRol;
@@ -39,6 +39,8 @@ public class Rol {
     this.nameRol = nameRol;
   }
 
-  
-
+  @Override
+  public String toString() {
+    return "Rol [idRol=" + idRol + ", nameRol=" + nameRol + "]";
+  }
 }
