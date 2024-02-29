@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 /*
  * 
  */
-
 @Entity
 @Table(name = "products")
 public class Products {
@@ -54,25 +53,6 @@ public class Products {
 
   @Column(name = "mtr_brand_id")
   private Long brandId;
-
-  public Products(String productName, Integer categoryProduct, Double priceProduct,
-      Long quantityInStock, String warehouseLocation, Long supplierProduct,
-      LocalDate entryDateProduct, String descriptionProduct, byte[] productImage,
-      String technicalSpecifications, Long brandId) {
-    super();
-    this.productName = productName;
-    this.categoryProduct = categoryProduct;
-    this.priceProduct = priceProduct;
-    this.quantityInStock = quantityInStock;
-    this.warehouseLocation = warehouseLocation;
-    this.supplierProduct = supplierProduct;
-    this.entryDateProduct = entryDateProduct;
-    this.descriptionProduct = descriptionProduct;
-    this.productImage = productImage;
-    this.technicalSpecifications = technicalSpecifications;
-    this.brandId = brandId;
-
-  }
 
   public Long getIdProduct() {
     return idProduct;

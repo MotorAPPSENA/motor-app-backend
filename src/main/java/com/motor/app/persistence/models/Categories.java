@@ -11,11 +11,9 @@ import jakarta.persistence.Table;
 /*
  * 
  */
-
 @Entity
 @Table(name = "mtr_categories")
 public class Categories {
-
 
   @Id
   @Column(name = "mtr_category_id")
@@ -76,7 +74,4 @@ public class Categories {
         + ", categoryDescription=" + categoryDescription + ", categoryImage="
         + Arrays.toString(categoryImage) + "]";
   }
-
-
-
 }

@@ -112,9 +112,6 @@ public class Suppliers {
         + ", countrySuppliers=" + countrySuppliers + ", phoneSuppliers=" + phoneSuppliers
         + ", emailSuppliers=" + emailSuppliers + "]";
   }
-
-
-
 }
 
 

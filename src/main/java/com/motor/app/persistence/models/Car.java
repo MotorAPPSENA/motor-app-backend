@@ -3,17 +3,21 @@ package com.motor.app.persistence.models;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /*
  * 
  */
-
 @Entity
 @Table(name = "car")
 public class Car {
 
+  @Id
   @Column(name = "mtr_car_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long carId;
 
   @Column(name = "mtr_customer_id_fk")
@@ -56,7 +60,4 @@ public class Car {
     return "Car [carId=" + carId + ", customerId=" + customerId + ", creationDateCar="
         + creationDateCar + "]";
   }
-
-
-
 }

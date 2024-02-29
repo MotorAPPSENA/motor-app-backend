@@ -2,17 +2,21 @@ package com.motor.app.persistence.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /*
  * 
  */
-
 @Entity
 @Table(name = "status_shipping")
 public class StatusShipping {
 
+  @Id
   @Column(name = "mtr_shipping_status_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long shippingStatusId;
 
   @Column(name = "mtr_shipping_status")
@@ -45,5 +49,4 @@ public class StatusShipping {
     return "StatusShipping [shippingStatusId=" + shippingStatusId + ", shippingStatus="
         + shippingStatus + "]";
   }
-
 }
