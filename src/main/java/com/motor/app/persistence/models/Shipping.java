@@ -52,6 +52,8 @@ public class Shipping {
   @Column(name = "mtr_shipping_notes")
   private String shippingNotes;
 
+ 
+ 
   public Shipping(Long shippingId, Long shippingTransactionId, Long shippingCustomerId,
       String shippingAddrest, LocalDateTime shippingDate, String shippingCompany,
       String trackingNumber, Integer shippingStatus, LocalDate deliveryDate, Double shippingCost,

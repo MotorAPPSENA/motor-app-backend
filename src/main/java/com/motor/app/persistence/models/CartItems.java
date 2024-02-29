@@ -30,7 +30,7 @@ public class CartItems {
   private Double subtotalItem;
 
   @Column(name = "mtr_status_item_fk")
-  private Long StatusItem;
+  private Long statusItem;
 
   @Column(name = "mtr_added_date")
   private LocalDateTime addedDate;
@@ -43,7 +43,7 @@ public class CartItems {
     this.idProduct = idProduct;
     this.quantityItem = quantityItem;
     this.subtotalItem = subtotalItem;
-    StatusItem = statusItem;
+    this.statusItem = statusItem;
     this.addedDate = addedDate;
   }
 
@@ -88,11 +88,11 @@ public class CartItems {
   }
 
   public Long getStatusItem() {
-    return StatusItem;
+    return statusItem;
   }
 
   public void setStatusItem(Long statusItem) {
-    StatusItem = statusItem;
+    this.statusItem = statusItem;
   }
 
   public LocalDateTime getAddedDate() {
@@ -106,10 +106,11 @@ public class CartItems {
   @Override
   public String toString() {
     return "CartItems [itemId=" + itemId + ", carId=" + carId + ", idProduct=" + idProduct
-        + ", quantityItem=" + quantityItem + ", subtotalItem=" + subtotalItem + ", StatusItem="
-        + StatusItem + ", addedDate=" + addedDate + "]";
+        + ", quantityItem=" + quantityItem + ", subtotalItem=" + subtotalItem + ", statusItem="
+        + statusItem + ", addedDate=" + addedDate + "]";
   }
 
+ 
 
 }
 
