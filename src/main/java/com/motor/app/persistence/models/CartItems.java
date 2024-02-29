@@ -10,106 +10,106 @@ import jakarta.persistence.Table;
  */
 
 @Table
-@Entity(name="cartItems")
+@Entity(name = "cart_items")
 public class CartItems {
 
-  
- @Column(name="mtr_item_id")
- private Long itemId;
- 
- @Column(name="mtr_car_id_fk")
- private Long carId;
- 
- @Column(name="mtr_id_product_fk")
- private Long idProduct;
- 
- @Column (name="mtr_quantity_item")
+
+  @Column(name = "mtr_item_id")
+  private Long itemId;
+
+  @Column(name = "mtr_car_id_fk")
+  private Long carId;
+
+  @Column(name = "mtr_id_product_fk")
+  private Long idProduct;
+
+  @Column(name = "mtr_quantity_item")
   private Long quantityItem;
- 
- @Column (name="mtr_subtotal_item")
- private Double subtotalItem;
- 
- @Column (name="mtr_status_item_fk")
- private Long StatusItem;
- 
- @Column (name="mtr_added_date")
- private LocalDateTime addedDate;
 
-public CartItems(Long itemId, Long carId, Long idProduct, Long quantityItem, Double subtotalItem,
-    Long statusItem, LocalDateTime addedDate) {
-  super();
-  this.itemId = itemId;
-  this.carId = carId;
-  this.idProduct = idProduct;
-  this.quantityItem = quantityItem;
-  this.subtotalItem = subtotalItem;
-  StatusItem = statusItem;
-  this.addedDate = addedDate;
-}
+  @Column(name = "mtr_subtotal_item")
+  private Double subtotalItem;
 
-public Long getItemId() {
-  return itemId;
-}
+  @Column(name = "mtr_status_item_fk")
+  private Long StatusItem;
 
-public void setItemId(Long itemId) {
-  this.itemId = itemId;
-}
+  @Column(name = "mtr_added_date")
+  private LocalDateTime addedDate;
 
-public Long getCarId() {
-  return carId;
-}
+  public CartItems(Long itemId, Long carId, Long idProduct, Long quantityItem, Double subtotalItem,
+      Long statusItem, LocalDateTime addedDate) {
+    super();
+    this.itemId = itemId;
+    this.carId = carId;
+    this.idProduct = idProduct;
+    this.quantityItem = quantityItem;
+    this.subtotalItem = subtotalItem;
+    StatusItem = statusItem;
+    this.addedDate = addedDate;
+  }
 
-public void setCarId(Long carId) {
-  this.carId = carId;
-}
+  public Long getItemId() {
+    return itemId;
+  }
 
-public Long getIdProduct() {
-  return idProduct;
-}
+  public void setItemId(Long itemId) {
+    this.itemId = itemId;
+  }
 
-public void setIdProduct(Long idProduct) {
-  this.idProduct = idProduct;
-}
+  public Long getCarId() {
+    return carId;
+  }
 
-public Long getQuantityItem() {
-  return quantityItem;
-}
+  public void setCarId(Long carId) {
+    this.carId = carId;
+  }
 
-public void setQuantityItem(Long quantityItem) {
-  this.quantityItem = quantityItem;
-}
+  public Long getIdProduct() {
+    return idProduct;
+  }
 
-public Double getSubtotalItem() {
-  return subtotalItem;
-}
+  public void setIdProduct(Long idProduct) {
+    this.idProduct = idProduct;
+  }
 
-public void setSubtotalItem(Double subtotalItem) {
-  this.subtotalItem = subtotalItem;
-}
+  public Long getQuantityItem() {
+    return quantityItem;
+  }
 
-public Long getStatusItem() {
-  return StatusItem;
-}
+  public void setQuantityItem(Long quantityItem) {
+    this.quantityItem = quantityItem;
+  }
 
-public void setStatusItem(Long statusItem) {
-  StatusItem = statusItem;
-}
+  public Double getSubtotalItem() {
+    return subtotalItem;
+  }
 
-public LocalDateTime getAddedDate() {
-  return addedDate;
-}
+  public void setSubtotalItem(Double subtotalItem) {
+    this.subtotalItem = subtotalItem;
+  }
 
-public void setAddedDate(LocalDateTime addedDate) {
-  this.addedDate = addedDate;
-}
+  public Long getStatusItem() {
+    return StatusItem;
+  }
 
-@Override
-public String toString() {
-  return "CartItems [itemId=" + itemId + ", carId=" + carId + ", idProduct=" + idProduct
-      + ", quantityItem=" + quantityItem + ", subtotalItem=" + subtotalItem + ", StatusItem="
-      + StatusItem + ", addedDate=" + addedDate + "]";
-}
+  public void setStatusItem(Long statusItem) {
+    StatusItem = statusItem;
+  }
 
- 
+  public LocalDateTime getAddedDate() {
+    return addedDate;
+  }
+
+  public void setAddedDate(LocalDateTime addedDate) {
+    this.addedDate = addedDate;
+  }
+
+  @Override
+  public String toString() {
+    return "CartItems [itemId=" + itemId + ", carId=" + carId + ", idProduct=" + idProduct
+        + ", quantityItem=" + quantityItem + ", subtotalItem=" + subtotalItem + ", StatusItem="
+        + StatusItem + ", addedDate=" + addedDate + "]";
+  }
+
+
 }
 

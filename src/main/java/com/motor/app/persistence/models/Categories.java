@@ -13,22 +13,22 @@ import jakarta.persistence.Table;
  */
 
 @Entity
-@Table(name = "categories")
+@Table(name = "mtr_categories")
 public class Categories {
 
-  
+
   @Id
-  @Column (name="mtr_category_id")
+  @Column(name = "mtr_category_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long categoryId;
-  
-  @Column (name="mtr_category_name")
+
+  @Column(name = "mtr_category_name")
   private String categoryName;
-  
-  @Column (name="category_description")
+
+  @Column(name = "category_description")
   private String categoryDescription;
-  
-  @Column (name="category_image")
+
+  @Column(name = "category_image")
   private byte[] categoryImage;
 
   public Categories(String categoryName, String categoryDescription, byte[] categoryImage) {
@@ -77,7 +77,6 @@ public class Categories {
         + Arrays.toString(categoryImage) + "]";
   }
 
-  
-  
-  
+
+
 }

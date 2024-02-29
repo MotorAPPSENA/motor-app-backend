@@ -10,59 +10,53 @@ import jakarta.persistence.Table;
  */
 
 @Entity
-@Table(name="car")
+@Table(name = "car")
 public class Car {
-  
-@Column (name="mtr_car_id")  
-private Long carId;
 
-@Column (name="mtr_customer_id_fk")  
-private Long customerId;
+  @Column(name = "mtr_car_id")
+  private Long carId;
 
-@Column (name="mtr_creation_date_car")  
-private LocalDateTime creationDateCar;
+  @Column(name = "mtr_customer_id_fk")
+  private Long customerId;
 
-public Car(LocalDateTime creationDateCar) {
-  super();
-  this.creationDateCar = creationDateCar;
-}
+  @Column(name = "mtr_creation_date_car")
+  private LocalDateTime creationDateCar;
 
-public Long getCarId() {
-  return carId;
-}
+  public Car(LocalDateTime creationDateCar) {
+    super();
+    this.creationDateCar = creationDateCar;
+  }
 
-public void setCarId(Long carId) {
-  this.carId = carId;
-}
+  public Long getCarId() {
+    return carId;
+  }
 
-public Long getCustomerId() {
-  return customerId;
-}
+  public void setCarId(Long carId) {
+    this.carId = carId;
+  }
 
-public void setCustomerId(Long customerId) {
-  this.customerId = customerId;
-}
+  public Long getCustomerId() {
+    return customerId;
+  }
 
-public LocalDateTime getCreationDateCar() {
-  return creationDateCar;
-}
+  public void setCustomerId(Long customerId) {
+    this.customerId = customerId;
+  }
 
-public void setCreationDateCar(LocalDateTime creationDateCar) {
-  this.creationDateCar = creationDateCar;
-}
+  public LocalDateTime getCreationDateCar() {
+    return creationDateCar;
+  }
 
-@Override
-public String toString() {
-  return "Car [carId=" + carId + ", customerId=" + customerId + ", creationDateCar="
-      + creationDateCar + "]";
-}
+  public void setCreationDateCar(LocalDateTime creationDateCar) {
+    this.creationDateCar = creationDateCar;
+  }
 
-
+  @Override
+  public String toString() {
+    return "Car [carId=" + carId + ", customerId=" + customerId + ", creationDateCar="
+        + creationDateCar + "]";
+  }
 
 
 
-
-
-  
-  
 }
