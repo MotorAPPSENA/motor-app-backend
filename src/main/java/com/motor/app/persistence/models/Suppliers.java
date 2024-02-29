@@ -11,32 +11,31 @@ import jakarta.persistence.Table;
  * 
  */
 
-
 @Entity
-@Table(name ="suppliers")
+@Table(name = "suppliers")
 public class Suppliers {
-  
+
   @Id
-  @Column(name ="mtr_supplier_id")
+  @Column(name = "mtr_supplier_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long supplierId;
-  
-  @Column(name ="mtr_supplier_name")
+
+  @Column(name = "mtr_supplier_name")
   private String supplierName;
-  
-  @Column(name ="mtr_supplier_addrest")
+
+  @Column(name = "mtr_supplier_addrest")
   private String supplierAddrest;
 
-  @Column(name ="mtr_city_suppliers")
+  @Column(name = "mtr_city_suppliers")
   private String citySuppliers;
-  
-  @Column(name ="mtr_country_suppliers")
+
+  @Column(name = "mtr_country_suppliers")
   private String countrySuppliers;
-  
-  @Column(name ="mtr_phone_suppliers")
+
+  @Column(name = "mtr_phone_suppliers")
   private String phoneSuppliers;
-  
-  @Column(name ="mtr_email_suppliers")
+
+  @Column(name = "mtr_email_suppliers")
   private String emailSuppliers;
 
   public Suppliers(String supplierName, String supplierAddrest, String citySuppliers,
@@ -113,22 +112,9 @@ public class Suppliers {
         + ", countrySuppliers=" + countrySuppliers + ", phoneSuppliers=" + phoneSuppliers
         + ", emailSuppliers=" + emailSuppliers + "]";
   }
-  
-  
-  
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
