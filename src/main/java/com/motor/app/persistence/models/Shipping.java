@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 /*
  * 
  */
-
 @Entity
 @Table(name = "shipping")
 public class Shipping {
@@ -51,26 +50,6 @@ public class Shipping {
 
   @Column(name = "mtr_shipping_notes")
   private String shippingNotes;
-
- 
- 
-  public Shipping(Long shippingId, Long shippingTransactionId, Long shippingCustomerId,
-      String shippingAddrest, LocalDateTime shippingDate, String shippingCompany,
-      String trackingNumber, Integer shippingStatus, LocalDate deliveryDate, Double shippingCost,
-      String shippingNotes) {
-    super();
-    this.shippingId = shippingId;
-    this.shippingTransactionId = shippingTransactionId;
-    this.shippingCustomerId = shippingCustomerId;
-    this.shippingAddrest = shippingAddrest;
-    this.shippingDate = shippingDate;
-    this.shippingCompany = shippingCompany;
-    this.trackingNumber = trackingNumber;
-    this.shippingStatus = shippingStatus;
-    this.deliveryDate = deliveryDate;
-    this.shippingCost = shippingCost;
-    this.shippingNotes = shippingNotes;
-  }
 
   public Long getShippingId() {
     return shippingId;

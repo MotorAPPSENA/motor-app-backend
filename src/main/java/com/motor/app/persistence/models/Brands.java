@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 /*
  *
  */
-
 @Entity
 @Table(name = "brands")
 public class Brands {
@@ -112,7 +111,5 @@ public class Brands {
         + countryOriginBrand + ", foundingYearBrand=" + foundingYearBrand + ", webSiteBrand="
         + webSiteBrand + ", descriptionBrand=" + descriptionBrand + ", logouUrl=" + logouUrl + "]";
   }
-
-
 }
 
