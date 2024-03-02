@@ -110,7 +110,7 @@ public class CartItems {
         + statusItem + ", addedDate=" + addedDate + "]";
   }
 
- 
+
 
 }
 
