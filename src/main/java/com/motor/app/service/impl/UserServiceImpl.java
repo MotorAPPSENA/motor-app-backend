@@ -4,11 +4,14 @@ import java.util.Base64;
 import java.util.Objects;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import com.motor.app.exception.GlobalException;
 import com.motor.app.persistence.dto.ResponseService;
 import com.motor.app.persistence.dto.UserDto;
 import com.motor.app.persistence.models.Users;
 import com.motor.app.persistence.repository.UserRepository;
 import com.motor.app.service.UserService;
+import com.motor.app.util.message.MessageEnum;
+import com.motor.app.util.validation.Validation;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -19,22 +22,14 @@ class UserServiceImpl implements UserService {
 
   @Override
   public ResponseService<String> registerUser(UserDto userDto) {
-    validateUser(userDto);
+    Validation.validateUser(userDto);
     var username = repository.buscarUsuario(userDto.getUsername());
 
     if (Objects.nonNull(username)) {
-      throw new RuntimeException("¡El usuario " + username + " ya existe  !");
+      throw new GlobalException(MessageEnum.ALREADY_EXIST.getCode(),
+          String.format(MessageEnum.ALREADY_EXIST.getMessage(), userDto.getUsername()));
     }
-    Users entity = new Users();
-    entity.setNameUser(userDto.getNameUser());
-    entity.setLastName(userDto.getLastName());
-    entity.setAgeUser(userDto.getAgeUser());
-    entity.setPassword(Base64.getEncoder().encodeToString(userDto.getPassword().getBytes()));
-    entity.setPosition(userDto.getPosition());
-    entity.setUsername(userDto.getUsername());
-    entity.setRoleId(1L);
-    repository.save(entity);
-
+    repository.save(buildEntity(userDto));
 
     return new ResponseService<>(HttpStatus.CREATED.name(), "¡Resgistro exitoso!",
         HttpStatus.CREATED.getReasonPhrase());
@@ -55,22 +50,18 @@ class UserServiceImpl implements UserService {
     return null;
   }
 
-  private void validateUser(UserDto dto) {
-    validate(dto);
-    validate(dto.getNameUser());
-    validate(dto.getLastName());
-    validate(dto.getAgeUser());
-    validate(dto.getPosition());
-    validate(dto.getUsername());
-    validate(dto.getPassword());
-
+  /*
+   * 
+   */
+  private Users buildEntity(UserDto userDto) {
+    Users entity = new Users();
+    entity.setNameUser(userDto.getNameUser());
+    entity.setLastName(userDto.getLastName());
+    entity.setAgeUser(userDto.getAgeUser());
+    entity.setPassword(Base64.getEncoder().encodeToString(userDto.getPassword().getBytes()));
+    entity.setPosition(userDto.getPosition());
+    entity.setUsername(userDto.getUsername());
+    entity.setRoleId(1L);
+    return entity;
   }
-
-  private void validate(Object obj) {
-    if (Objects.isNull(obj)) {
-      throw new RuntimeException("¡Este campo no puede ser nulo!");
-
-    }
-  }
-
 }
