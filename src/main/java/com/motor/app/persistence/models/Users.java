@@ -6,10 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 /*
  * 
  */
+@Data
 @Entity
 @Table(name = "users")
 public class Users {
@@ -33,52 +35,11 @@ public class Users {
 
   @Column(name = "mtr_role_user_fk")
   private Long roleId;
+  
+  @Column(name = "mtr_username")
+  private String username;
+  
+  @Column(name = "mtr_password")
+  private String password;
 
-  public Long getIdUSer() {
-    return idUSer;
-  }
-
-  public void setIdUSer(Long idUSer) {
-    this.idUSer = idUSer;
-  }
-
-  public String getNameUser() {
-    return nameUser;
-  }
-
-  public void setNameUser(String nameUser) {
-    this.nameUser = nameUser;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getAgeUser() {
-    return ageUser;
-  }
-
-  public void setAgeUser(String ageUser) {
-    this.ageUser = ageUser;
-  }
-
-  public String getPosition() {
-    return position;
-  }
-
-  public void setPosition(String position) {
-    this.position = position;
-  }
-
-  public Long getRoleId() {
-    return roleId;
-  }
-
-  public void setRoleId(Long roleId) {
-    this.roleId = roleId;
-  }
 }
