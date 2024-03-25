@@ -17,7 +17,7 @@ public class Validation {
     validate(dto, "object");
     validate(dto.getNameUser(), "name");
     validate(dto.getLastName(), "lastname");
-    validate(dto.getAgeUser(), "age");
+    validate(dto.getAgeUser (), "age");
     validate(dto.getPosition(), "position");
     validate(dto.getUsername(), "username");
     validate(dto.getPassword(), "password");
@@ -30,4 +30,10 @@ public class Validation {
 
     }
   }
+  
+  public static void validateLogin(String username, String password) {
+    validate(username, "username");
+    validate(password, "password");
+  }
+  
 }

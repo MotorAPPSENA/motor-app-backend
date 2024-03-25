@@ -9,4 +9,7 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 
   @Query(value = "select mtr_id_user from users where mtr_username= :username", nativeQuery = true)
   Long buscarUsuario(@Param("username") String username);
+  
+  @Query(value = "select * from users where mtr_username= :username LIMIT 1", nativeQuery = true)
+  Users buscarUsuarioPorUserName(@Param("username") String username);
 }

@@ -37,7 +37,20 @@ class UserServiceImpl implements UserService {
 
   @Override
   public ResponseService<String> login(String username, String password) {
-    return null;
+    Validation.validateLogin(username, password);
+    var passCipher = Base64.getEncoder().encodeToString(password.getBytes());
+    var user = repository.buscarUsuarioPorUserName(username);
+    if (Objects.isNull(user)) {
+      throw new GlobalException(MessageEnum.USER_NOT_FOUND.getCode(),
+          MessageEnum.USER_NOT_FOUND.getMessage());
+    }
+    if (!passCipher.equals(user.getPassword())) {
+      throw new GlobalException(MessageEnum.WRONG_PASSWORD.getCode(),
+          MessageEnum.WRONG_PASSWORD.getMessage());
+    }
+    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()), "¡Inicio de sesión satisfactorio!",
+        HttpStatus.OK.getReasonPhrase());
+
   }
 
   @Override
