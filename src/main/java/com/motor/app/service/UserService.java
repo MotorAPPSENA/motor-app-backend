@@ -12,6 +12,5 @@ public interface UserService {
   ResponseService<String> updateUser(Long idUser);
 
   ResponseService<String> deleteUser(Long iduser);
-
 }
 

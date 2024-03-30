@@ -11,7 +11,6 @@ import com.motor.app.persistence.models.Users;
 import com.motor.app.persistence.repository.UserRepository;
 import com.motor.app.service.UserService;
 import com.motor.app.util.message.MessageEnum;
-import com.motor.app.util.validation.Validation;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -22,7 +21,7 @@ class UserServiceImpl implements UserService {
 
   @Override
   public ResponseService<String> registerUser(UserDto userDto) {
-    Validation.validateUser(userDto);
+
     var username = repository.buscarUsuario(userDto.getUsername());
 
     if (Objects.nonNull(username)) {
@@ -37,7 +36,6 @@ class UserServiceImpl implements UserService {
 
   @Override
   public ResponseService<String> login(String username, String password) {
-    Validation.validateLogin(username, password);
     var passCipher = Base64.getEncoder().encodeToString(password.getBytes());
     var user = repository.buscarUsuarioPorUserName(username);
     if (Objects.isNull(user)) {
@@ -48,8 +46,8 @@ class UserServiceImpl implements UserService {
       throw new GlobalException(MessageEnum.WRONG_PASSWORD.getCode(),
           MessageEnum.WRONG_PASSWORD.getMessage());
     }
-    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()), "¡Inicio de sesión satisfactorio!",
-        HttpStatus.OK.getReasonPhrase());
+    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()),
+        "¡Inicio de sesión satisfactorio!", HttpStatus.OK.getReasonPhrase());
 
   }
 
@@ -68,9 +66,9 @@ class UserServiceImpl implements UserService {
    */
   private Users buildEntity(UserDto userDto) {
     Users entity = new Users();
-    entity.setNameUser(userDto.getNameUser());
-    entity.setLastName(userDto.getLastName());
-    entity.setAgeUser(userDto.getAgeUser());
+    entity.setNameUser(userDto.getName());
+    entity.setLastName(userDto.getLastname());
+    entity.setAgeUser(userDto.getAge());
     entity.setPassword(Base64.getEncoder().encodeToString(userDto.getPassword().getBytes()));
     entity.setPosition(userDto.getPosition());
     entity.setUsername(userDto.getUsername());
