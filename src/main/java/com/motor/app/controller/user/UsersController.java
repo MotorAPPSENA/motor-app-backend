@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.motor.app.persistence.dto.ResponseService;
 import com.motor.app.persistence.dto.UserDto;
 import com.motor.app.service.UserService;
-import com.motor.app.util.validation.Validation;
+import com.motor.app.util.validation.ValidationDto;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 
 /*
@@ -27,19 +28,25 @@ class UsersController {
 
   private final UserService service;
 
+  /*
+   * 
+   */
   @PostMapping(path = "register", consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<ResponseService<String>> registerUser(@Valid @RequestBody UserDto userdto,
       BindingResult bindingResult) {
-    Validation.validateObject(bindingResult);
+    ValidationDto.validateObject(bindingResult);
     var response = service.registerUser(userdto);
     return new ResponseEntity<>(response, HttpStatus.CREATED);
   }
 
+  /*
+   * 
+   */
   @GetMapping(path = "login", produces = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<ResponseService<String>> login(
-      @RequestParam(name = "username", required = true) String username,
-      @RequestParam(name = "password", required = true) String password) {
+      @Valid @RequestParam(name = "username", required = true) @NotBlank String username,
+      @Valid @RequestParam(name = "password", required = true) @NotBlank String password) {
     var response = service.login(username, password);
     return new ResponseEntity<>(response, HttpStatus.OK);
   }
