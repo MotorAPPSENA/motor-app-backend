@@ -12,6 +12,9 @@ CREATE TABLE users (
     PRIMARY KEY(mtr_id_user)
 );
 
+
+
+
 CREATE TABLE roles (
 mtr_id_role int NOT NULL,
 mtr_name_role varchar (50) not null,
@@ -217,3 +220,7 @@ ALTER TABLE suppliers RENAME COLUMN mtr_city_addrest TO mtr_city_suppliers;
 ALTER TABLE suppliers RENAME COLUMN mtr_country_addrest TO mtr_country_suppliers;
 ALTER TABLE suppliers RENAME COLUMN mtr_phone_addrest TO mtr_phone_suppliers;
 ALTER TABLE suppliers RENAME COLUMN mtr_email_addrest TO mtr_email_suppliers;
+
+
+alter table users add mtr_username varchar(100) not null;
+alter table users add mtr_password varchar(150) not null;
