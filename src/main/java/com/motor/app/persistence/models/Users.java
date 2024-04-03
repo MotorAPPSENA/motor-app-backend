@@ -41,5 +41,4 @@ public class Users {
   
   @Column(name = "mtr_password")
   private String password;
-
 }

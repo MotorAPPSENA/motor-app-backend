@@ -1,4 +1,4 @@
-package com.motor.app.persistence.dto;
+package com.motor.app.persistence.dto.user;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -22,7 +22,7 @@ public class UserDto {
   @NotNull(message = MESSAGE)
   private String lastname;
 
-  @Min(value = 13, message = "La edad minima es 13")
+  @Min(value = 16, message = "La edad minima es 16")
   @NotBlank(message = MESSAGE)
   @NotNull(message = MESSAGE)
   private String age;
@@ -30,6 +30,8 @@ public class UserDto {
   @NotBlank(message = MESSAGE)
   @NotNull(message = MESSAGE)
   private String position;
+
+  private Long roleId;
 
   @NotBlank(message = MESSAGE)
   @NotNull(message = MESSAGE)

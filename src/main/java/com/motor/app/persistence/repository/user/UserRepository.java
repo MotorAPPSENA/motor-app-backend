@@ -1,4 +1,4 @@
-package com.motor.app.persistence.repository;
+package com.motor.app.persistence.repository.user;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

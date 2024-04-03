@@ -1,4 +1,4 @@
-package com.motor.app.service.impl;
+package com.motor.app.service.user.impl;
 
 import java.util.Base64;
 import java.util.Objects;
@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.motor.app.exception.GlobalException;
 import com.motor.app.persistence.dto.ResponseService;
-import com.motor.app.persistence.dto.UserDto;
+import com.motor.app.persistence.dto.user.UserDto;
 import com.motor.app.persistence.models.Users;
-import com.motor.app.persistence.repository.UserRepository;
-import com.motor.app.service.UserService;
+import com.motor.app.persistence.repository.user.UserRepository;
+import com.motor.app.service.user.UserService;
 import com.motor.app.util.message.MessageEnum;
 import lombok.RequiredArgsConstructor;
 
@@ -25,12 +25,12 @@ class UserServiceImpl implements UserService {
     var username = repository.buscarUsuario(userDto.getUsername());
 
     if (Objects.nonNull(username)) {
-      throw new GlobalException(MessageEnum.ALREADY_EXIST.getCode(),
-          String.format(MessageEnum.ALREADY_EXIST.getMessage(), userDto.getUsername()));
+      throw new GlobalException(MessageEnum.USER_ALREADY_EXIST.getCode(),
+          String.format(MessageEnum.USER_ALREADY_EXIST.getMessage(), userDto.getUsername()));
     }
     repository.save(buildEntity(userDto));
 
-    return new ResponseService<>(HttpStatus.CREATED.name(), "¡Resgistro exitoso!",
+    return new ResponseService<>(HttpStatus.CREATED.name(), MessageEnum.SUCCESSFULLY.getMessage(),
         HttpStatus.CREATED.getReasonPhrase());
   }
 
@@ -52,13 +52,37 @@ class UserServiceImpl implements UserService {
   }
 
   @Override
-  public ResponseService<String> updateUser(Long idUser) {
-    return null;
+  public ResponseService<String> updateUser(Long idUser, UserDto userDto) {
+
+    var findUser = repository.findById(idUser)
+        .orElseThrow(() -> new GlobalException(MessageEnum.USER_NOT_FOUND.getCode(),
+            MessageEnum.USER_NOT_FOUND.getMessage()));
+
+    findUser.setIdUSer(idUser);
+    findUser.setNameUser(userDto.getName());
+    findUser.setLastName(userDto.getLastname());
+    findUser.setAgeUser(userDto.getAge());
+    findUser.setPosition(userDto.getPosition());
+    findUser.setRoleId(Objects.isNull(userDto.getRoleId()) ? 1L : userDto.getRoleId());
+    findUser.setUsername(userDto.getUsername());
+    findUser.setPassword(Base64.getEncoder().encodeToString(userDto.getPassword().getBytes()));
+
+    repository.save(findUser);
+    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()), "¡Actualización exitosa!",
+        HttpStatus.OK.getReasonPhrase());
   }
 
   @Override
-  public ResponseService<String> deleteUser(Long iduser) {
-    return null;
+  public ResponseService<String> deleteUser(Long idUser) {
+
+    var findUser = repository.findById(idUser)
+        .orElseThrow(() -> new GlobalException(MessageEnum.USER_NOT_FOUND.getCode(),
+            MessageEnum.USER_NOT_FOUND.getMessage()));
+
+    repository.deleteById(findUser.getIdUSer());
+
+    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()), "¡Eliminación exitosa!",
+        HttpStatus.OK.getReasonPhrase());
   }
 
   /*
