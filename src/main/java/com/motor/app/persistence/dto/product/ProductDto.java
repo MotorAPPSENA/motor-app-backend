@@ -36,7 +36,6 @@ public class ProductDto {
   @NotBlank
   private String descriptionProduct;
 
-  @NotBlank
   private byte[] productImage;
 
   @NotBlank

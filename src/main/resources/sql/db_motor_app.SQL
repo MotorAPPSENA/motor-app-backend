@@ -224,3 +224,6 @@ ALTER TABLE suppliers RENAME COLUMN mtr_email_addrest TO mtr_email_suppliers;
 
 alter table users add mtr_username varchar(100) not null;
 alter table users add mtr_password varchar(150) not null;
+
+ALTER TABLE mtr_categories  DROP COLUMN category_image;
+

@@ -1,5 +1,6 @@
 package com.motor.app.persistence.dto.supplier;
 
+import static com.motor.app.util.constans.Constants.MESSAGE;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,8 +13,6 @@ import lombok.Data;
 @Data
 @Builder
 public class ProveedorDto {
-
-  private static final String MESSAGE = "El campo '%s' no debe ser vacío o nulo";
 
   private Long supplierId;
 
