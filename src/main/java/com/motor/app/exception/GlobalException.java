@@ -3,7 +3,7 @@ package com.motor.app.exception;
 import lombok.Getter;
 
 /*
- * 
+ * Clase que permite transportar los datos de la excepcion
  */
 @Getter
 public class GlobalException extends RuntimeException {

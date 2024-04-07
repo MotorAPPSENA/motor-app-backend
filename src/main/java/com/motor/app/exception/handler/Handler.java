@@ -17,14 +17,14 @@ import com.motor.app.util.message.MessageEnum;
 import lombok.extern.slf4j.Slf4j;
 
 /*
- * 
+ * Controlador de excepciones
  */
 @Slf4j
 @RestControllerAdvice
 public class Handler {
 
   /*
-   * 
+   * Metodo que captura la excepcion GlobalException (personalizado)
    */
   @ExceptionHandler(value = {GlobalException.class})
   ResponseEntity<ResponseError> handlerGlobal(GlobalException ex) {

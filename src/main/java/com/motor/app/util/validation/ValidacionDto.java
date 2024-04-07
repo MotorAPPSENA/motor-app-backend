@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
  *
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ValidationDto {
+public class ValidacionDto {
 
-  public static void validateObject(BindingResult bindingResult) {
+  public static void validarObjeto(BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       messageException(bindingResult.getFieldError());
     }

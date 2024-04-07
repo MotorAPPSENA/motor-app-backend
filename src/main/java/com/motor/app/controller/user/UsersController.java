@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.motor.app.persistence.dto.ResponseService;
 import com.motor.app.persistence.dto.user.UserDto;
 import com.motor.app.service.user.UserService;
-import com.motor.app.util.validation.ValidationDto;
+import com.motor.app.util.validation.ValidacionDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +38,7 @@ class UsersController {
       produces = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<ResponseService<String>> registerUser(@Valid @RequestBody UserDto userdto,
       BindingResult bindingResult) {
-    ValidationDto.validateObject(bindingResult);
+    ValidacionDto.validarObjeto(bindingResult);
     var response = service.registerUser(userdto);
     return new ResponseEntity<>(response, HttpStatus.CREATED);
   }

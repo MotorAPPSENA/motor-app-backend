@@ -11,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class SuppliersDto {
+public class ProveedorDto {
 
   private static final String MESSAGE = "El campo '%s' no debe ser vacío o nulo";
 

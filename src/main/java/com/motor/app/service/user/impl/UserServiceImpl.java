@@ -4,6 +4,7 @@ import java.util.Base64;
 import java.util.Objects;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.motor.app.exception.GlobalException;
 import com.motor.app.persistence.dto.ResponseService;
 import com.motor.app.persistence.dto.user.UserDto;
@@ -20,6 +21,7 @@ class UserServiceImpl implements UserService {
   private final UserRepository repository;
 
   @Override
+  @Transactional
   public ResponseService<String> registerUser(UserDto userDto) {
 
     var username = repository.buscarUsuario(userDto.getUsername());
@@ -54,7 +56,11 @@ class UserServiceImpl implements UserService {
   @Override
   public ResponseService<String> updateUser(Long idUser, UserDto userDto) {
 
-    var findUser = repository.findById(idUser)
+ /*en la siguiente funcion primero se buscara el usuario por id para identificar 
+  * si existe, si no existe enviara nuestra excepcion "USER_NOT_FOUND" la cual
+  * guarda el mensaje en la clase MessageEnum.java*/
+    
+    var findUser = repository.findById(idUser) 
         .orElseThrow(() -> new GlobalException(MessageEnum.USER_NOT_FOUND.getCode(),
             MessageEnum.USER_NOT_FOUND.getMessage()));
 

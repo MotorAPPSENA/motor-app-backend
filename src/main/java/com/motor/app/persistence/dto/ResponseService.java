@@ -7,9 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ResponseService<T> {
 
-  private String code;
+  private String codigo;
 
-  private String message;
+  private String mensaje;
 
-  private T response;
+  private T respuesta;
 }

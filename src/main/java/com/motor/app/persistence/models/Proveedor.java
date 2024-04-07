@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name = "suppliers")
-public class Suppliers {
+public class Proveedor {
 
   @Id
   @Column(name = "mtr_supplier_id")
@@ -43,6 +43,8 @@ public class Suppliers {
 
   @Column(name = "mtr_identifier_suppliers", unique = true)
   private String identifier;
+  
+  
 }
 
 
