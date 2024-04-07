@@ -13,5 +13,5 @@ public interface ProveedorService {
 
   ResponseService<Proveedor> actualizarProveedor(Long idSupplier, ProveedorDto suppliersDto);
 
-  ResponseService<ProveedorDto> eliminarProveedor(Long idSupplier);
+  ResponseService<String> eliminarProveedor(Long idSupplier);
 }

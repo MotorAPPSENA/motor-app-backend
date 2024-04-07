@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,18 +29,19 @@ class SuppliersController {
 
   private final ProveedorService proveedorService;
 
- /**
-  * Metodo para registrar un proveedor 
-  * @param suppliersDto -> Objeto con la Data a registrar
-  * @param bindingResult -> Captura las restricciones de las validaciones
-  * @return Retorna el objeto indicando registro exitoso
-  */
+  /**
+   * Metodo para registrar un proveedor
+   * 
+   * @param suppliersDto -> Objeto con la Data a registrar
+   * @param bindingResult -> Captura las restricciones de las validaciones
+   * @return Retorna el objeto indicando registro exitoso
+   */
   @PostMapping(path = "register", consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<ResponseService<Proveedor>> createSupplier(
       @Valid @RequestBody ProveedorDto suppliersDto, BindingResult bindingResult) {
 
-    
+
     ValidacionDto.validarObjeto(bindingResult);
     var response = proveedorService.crearProveedor(suppliersDto);
     return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -66,4 +68,10 @@ class SuppliersController {
     return new ResponseEntity<>(response, HttpStatus.OK);
   }
 
+  @DeleteMapping(path = "delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  ResponseEntity<ResponseService<String>> eliminaProveedor(@PathVariable(name = "id") Long id) {
+
+    var response = proveedorService.eliminarProveedor(id);
+    return new ResponseEntity<ResponseService<String>>(response, HttpStatus.OK);
+  }
 }

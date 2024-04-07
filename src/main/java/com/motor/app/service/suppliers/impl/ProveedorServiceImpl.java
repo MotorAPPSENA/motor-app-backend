@@ -54,7 +54,8 @@ class ProveedorServiceImpl implements ProveedorService {
    */
 
   @Override
-  public ResponseService<Proveedor> actualizarProveedor(Long idSupplier, ProveedorDto suppliersDto) {
+  public ResponseService<Proveedor> actualizarProveedor(Long idSupplier,
+      ProveedorDto suppliersDto) {
 
     /*
      * en la siguiente funcion primero se buscara el proveedor por id, si existe se actualiza con la
@@ -94,9 +95,15 @@ class ProveedorServiceImpl implements ProveedorService {
   }
 
   @Override
-  public ResponseService<ProveedorDto> eliminarProveedor(Long idSupplier) {
+  public ResponseService<String> eliminarProveedor(Long idSupplier) {
 
-    return null;
+    var result = proveedorRepository.findById(idSupplier)
+        .orElseThrow(() -> new GlobalException(404, "provedor no encontrado"));
+    
+    proveedorRepository.deleteById(result.getSupplierId());
+    
+    return new ResponseService<>(String.valueOf(HttpStatus.OK.value()), "!eliminado proveedor",
+        HttpStatus.OK.getReasonPhrase());
   }
 
 }
