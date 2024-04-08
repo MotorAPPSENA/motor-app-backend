@@ -72,6 +72,6 @@ class SuppliersController {
   ResponseEntity<ResponseService<String>> eliminaProveedor(@PathVariable(name = "id") Long id) {
 
     var response = proveedorService.eliminarProveedor(id);
-    return new ResponseEntity<ResponseService<String>>(response, HttpStatus.OK);
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }

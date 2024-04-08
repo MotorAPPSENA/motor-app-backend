@@ -227,3 +227,5 @@ alter table users add mtr_password varchar(150) not null;
 
 ALTER TABLE mtr_categories  DROP COLUMN category_image;
 
+ALTER TABLE brands  DROP COLUMN mtr_date_added;
+
