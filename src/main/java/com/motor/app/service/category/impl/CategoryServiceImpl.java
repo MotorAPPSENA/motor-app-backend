@@ -30,7 +30,7 @@ class CategoryServiceImpl implements CategoryService {
   @Override
   public ResponseService<List<CategoryDto>> listarCategorias() {
 
-    log.info("Init method getAll");
+    log.info("metodo de inicio obtener todas las categorias");
 
     // Se obtienen las categorias
     var listEntities = categoriesRepository.findAll();
