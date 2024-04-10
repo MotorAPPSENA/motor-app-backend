@@ -34,5 +34,8 @@ class BrandController {
     var result = brandsService.listarMarcas();
 
     return new ResponseEntity<>(result, HttpStatus.OK);
+    
+    
+    
   }
 }
