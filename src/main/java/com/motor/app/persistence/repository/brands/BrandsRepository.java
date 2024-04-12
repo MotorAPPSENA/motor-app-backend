@@ -9,5 +9,5 @@ import com.motor.app.persistence.models.Brands;
 
 public interface BrandsRepository extends JpaRepository<Brands, Long>{
   
-  Brands findByCategoryName(String name);
+  Brands findByBrandName(String name);
 }
